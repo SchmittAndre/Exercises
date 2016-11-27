@@ -47,8 +47,6 @@ CREATE TABLE `school` (
   `schoolId` int(11) NOT NULL,
   `addressId` int(11) NOT NULL,
   `name` varchar(255) DEFAULT '',
-  `fromDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `toDate` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_school_address1` FOREIGN KEY (`addressId`) REFERENCES `address` (`addressId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 )
