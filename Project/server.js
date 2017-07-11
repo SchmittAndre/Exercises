@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var blogdata = require('./blog.json');
-var jwt = require('./jwt.js')
+
 
 var app = express()
 
