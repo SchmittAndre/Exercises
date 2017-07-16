@@ -3,8 +3,8 @@ var router = express.Router();
 var jwt = require('./../bin/jsonwebtoken.js');
 userData = require('../ressorces/user.json');
 
-router.put('/login', login)
-router.put('/passwordRecovery', recovery)
+router.put('/login', login);
+router.put('/passwordRecovery', recovery);
 
 function login (req,res){
     if (req.body.username !== userData.username || req.body.password !== userData.password) {

@@ -2,7 +2,7 @@
  * Created by Andre on 16.07.2017.
  */
 var jwt = require('jsonwebtoken');
-var secret = '42isnice!TEXTVENTURER'
+var secret = '42isnice!TEXTVENTURER';
 exports.generateToken = function(userName)
 {
     //generate token
@@ -14,4 +14,8 @@ exports.generateToken = function(userName)
 
 exports.checkToken = function(req, res, next) {
 
+    var token = req.headers.authorization;
+
+
+    next()
 };

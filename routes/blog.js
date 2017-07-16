@@ -10,7 +10,6 @@ router.route('/:id')
         .delete(delPost_Id);
 
 function getBlogLIst(req, res){
-
     res.json(bloglist);
 }
 
