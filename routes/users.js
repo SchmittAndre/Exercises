@@ -25,6 +25,7 @@ function recovery(req, res){
     res.status(200).json({
         message: 'Password changed'
     });
+
 }
 
 
