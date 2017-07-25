@@ -1,6 +1,4 @@
-/**
- * Created by Andre on 16.07.2017.
- */
+
 var jwt = require('jsonwebtoken');
 var secret = '42isnice!TEXTVENTURER';
 exports.generateToken = function(userName)
@@ -15,7 +13,16 @@ exports.generateToken = function(userName)
 exports.checkToken = function(req, res, next) {
 
     var token = req.headers.authorization;
-
-
+        res.locals.authentorized = false;
+    try {
+        var dJwt = jwt.verify(token, secret);
+        res.locals.authentorized = true;
+        res.locals.token = dJwt;
+        res.status(200).json({"secret": secret});
+    }
+    catch (e) {
+        Console.Log(e)
+    }
     next()
 };
+
