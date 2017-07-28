@@ -18,8 +18,8 @@ function login (req,res){
 }
 
 function recovery(req, res){
-    var body = req.body
-    userData.password = body.password
+    var body = req.body;
+    userData.password = body.password;
 
 
     res.status(200).json({

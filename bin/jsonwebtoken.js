@@ -4,10 +4,10 @@ var secret = '42isnice!TEXTVENTURER';
 exports.generateToken = function(userName)
 {
     //generate token
-    var token = jwt.sign({exp: Math.floor(Date.now() / 1000) + 60*180,
+    return jwt.sign({
+        exp: Math.floor(Date.now() / 1000) + 60 * 180,
         username: userName
-    },secret);
-    return token
+    }, secret)
 };
 
 exports.checkToken = function(req, res, next) {
