@@ -18,10 +18,9 @@ exports.checkToken = function(req, res, next) {
         var dJwt = jwt.verify(token, secret);
         res.locals.authentorized = true;
         res.locals.token = dJwt;
-        res.status(200).json({"secret": secret});
     }
     catch (e) {
-        Console.Log(e)
+        console.log(e)
     }
     next()
 };

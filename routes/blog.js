@@ -11,11 +11,19 @@ router.route('/:id([0-9]+)')
         .delete(delPost_Id);
 
 function getBlogLIst(req, res){
-    res.json(bloglist);
+    if (res.locals.authentorized)
+    res.status(200).json(bloglist);
+    else
+    {
+        res.status(200).json(bloglist.filter(function(test){
+            return test.hidden == false;
+        }));
+    }
+
 }
 
 function getPost_Id (req, res) {
-    if (bloglist[req.params.id].hidden) {
+    if (bloglist[req.params.id].hidden && res.locals.authentorized === false) {
         res.status(401).json({
             message: 'Forbidden'
         });
@@ -26,7 +34,7 @@ function getPost_Id (req, res) {
 
 function  delPost_Id(req, res) {
     var id = req.params.id;
-    if (bloglist[req.params.id].hidden) {
+    if (bloglist[req.params.id].hidden && res.locals.authentorized === false) {
         res.status(401).json({
             message: 'Forbidden'
         });
@@ -41,10 +49,9 @@ function  delPost_Id(req, res) {
             })
         }
         else{
-                res.status(200).json({
-                    message: 'Post Deleted'
-                });
-                return
+            res.status(200).json({
+                message: 'Post Deleted'
+            });
         }
     });
 
