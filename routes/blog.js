@@ -37,13 +37,20 @@ function getPost_Id (req, res) {
 
 function  delPost_Id(req, res) {
     var id = req.params.id;
+    if (!bloglist[id])
+    {
+        res.status(500).json({
+            message: 'Post not Found'
+        });
+        return;
+    }
     if (bloglist[id].hidden && res.locals.authentorized === false) {
         res.status(401).json({
             message: 'Forbidden'
         });
         return;
     }
-    delete bloglist[id];
+    bloglist.splice(id, 1);
 
     fs.writeFile("./ressorces/blog.json", JSON.stringify(bloglist,null,3), function(err) {
         if(err) {
